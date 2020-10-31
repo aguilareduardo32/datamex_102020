@@ -1,0 +1,584 @@
+
+
+
+
+Data science without statistics is possible, even desirable - Data Science Central
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+Search
+
+
+
+
+Sign Up
+Sign In
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+HomeTop ContentEditorial GuidelinesAIMLDLAnalyticsBig DataDataVizHadoopPodcastsWebinarsForumsEducationMembershipTop ContentArchivesGroupsSearchContact
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+Subscribe to DSC Newsletter
+
+
+
+
+
+
+
+
+
+All Blog PostsMy BlogAdd
+
+
+
+Data science without statistics is possible, even desirable
+
+Posted by Vincent Granville on December 8, 2014 at 5:00pm
+View Blog
+
+
+
+
+
+
+The purpose of this article is to clarify a few misconceptions about data and statistical science.
+I will start with a controversial statement: data science barely uses statistical science and techniques. The truth is actually more nuanced, as explained below.
+
+1. Data science heavily uses new statistical science
+But the new statistical science in question is not regarded as statistics, by many statisticians. I don't know how to call it, "new statistical science" is a misnomer, because it is not all that novel. And it is regarded by statisticians as dirty data processing, not elegant statistics.
+It contains topics such as
+
+Hidden decision trees: blending multiple simple scoring/clustering engines to take advantage of sparsity in big data
+Predictive power for data reduction and feature selection
+Combinatorial feature selection
+Jackknife regression: unites hundreds of confusing regression methods, providing a simple, easy-to-interpret, robust predictive technique based on approximate, low-dimensional solutions, avoiding the curse of dimensionality, avoiding over-fitting, and providing slightly biased estimates (a terrible sin for statisticians!) 
+Random numbers: new kind of simulators of high quality, and non-periodic
+Pattern recognition: detection of structures and signal, identifying true signal in an ocean of spurious correlations
+Clustering big data without using n x n matrices, but using hash tables and Map-Reduce
+Real time architectures for predictive modeling
+Model-free confidence intervals based on statistics computed across multiple similar data bins
+Synthetic metrics such as bumpiness coefficient, or scale-independent variance (another big sin for statisticians!)
+Data bucketization, interpolation and extrapolations at the bucket level
+
+I have sometimes used the word rebel statistics  to describe these methods.
+While I consider these topics to be statistical science (I contributed to many of them myself, and my background is in computational statistics), most statisticians I talked to do not see it as statistical science. And calling this stuff statistics only creates confusion, especially for hiring managers.
+Some people call it statistical learning. One of the precursors of this type of methods is Trevor Hastie who wrote one of the first data science books, called The Elements of Statistical Learning.
+2. Data science uses a bit of old statistical science
+Including the following topics, which curiously enough, are not found in standard statistical textbooks:
+
+Time series, ARMA (auto-regressive) processes, correlograms
+Spatial and cluster processes
+Survival models
+Markov processes
+Goodness-of-fit techniques
+Experimental design 101 (not the advanced techniques used in clinical trials)
+A/B and multivariate testing, but without traditional tests of hypotheses
+Simulation, Markov-Chains Monte-Carlo methods
+Some Bayesian stuff, hierarchical models
+Rank statistics, percentiles, outliers detection (preferably not model-based)
+The concept of statistical significance (but not p-values or power)
+Cross validation
+Imputation techniques (dealing with missing data)
+Exploratory data analysis (to be automated with tools such as data dictionary, then it won't be old statistics anymore)
+Sampling
+Some statistical distributions
+Random variables 
+Some asymptotic results, although I encourage Monte-Carlo simulations to obtain limiting distributions, rather than theoretical principles which may not apply to real, modern data
+
+These techniques can be summarized in one page, and time permitting, I will write that page and call it "statistics cheat sheet for data scientists". Interestingly, from a typical 600-pages textbook on statistics, about 20 pages are relevant to data science, and these 20 pages can be compressed in 0.25 page. For instance, I believe that you can explain the concept of random variable and distribution (at least what you need to understand to practice data science) in about 4 lines, rather than 150 pages. The idea is to explain it in plain English with a few examples, and defining distribution as the expected (based on model) or  limit of a frequency distribution (histogram).
+Funny fact: some of these classic stats texbooks still feature tables of statistical distributions in an appendix. Who still use such tables for computations? Not a data scientist, for sure. Most programming languages offer libraries for these computations, and you can even code it yourself in a couple of lines of code. A book such as numerical recipes in C++ can prove useful, as it provides code for many statistical functions; see also our source code section on DSC, where I plan to add more modern implementations of statistical techniques, some even available as Excel formulas.
+3. Data science uses some operations research statistical science
+In particular, OLS (ordinary least squares) , Monte-Carlo techniques, mathematical optimization, the simplex algorithm, inventory and pricing management models.
+These techniques are not considered statistical science, they are often referred to as analytics or decision science.
+4. Data science does not use most old statistical science
+Some of these techniques have been heavily criticized:
+
+The 8 worst predictive modeling techniques
+Foundations of classical statistical theory being questioned
+10 types of regressions. Which one to use?
+
+Examples of old statistical techniques that I have never used recently in my data science career:
+
+Maximum likehood estimation (modern data produces complex likelihood functions with many local optima, or even non continuous likelihood functions)
+Regression
+Naïve bayes
+ANOVA
+Tests of hypotheses
+General linear model
+
+Now don't get me wrong, there are still plenty of people doing naive Bayes, linear or logistic regression, and it works on many simple data sets, and you'll get a job if you know these techniques, more easily than if you don't know them, because progress is slow. But the future is in uniting these techniques under a single methodology, simple, robust, with easy-to-interpret results, available as black box to non-experts, and easy to automate. This project (I'm working on it, some computer science people at Cambridge University also work on this) is sometimes referred to as the automated statistician.
+But just to give an example, naive Bayes (old stats, still widely used unfortunately) is terrible at detecting spam and categorizing email because it wrongly assumes that rules are independent, while a modern version called hidden decision trees (new stats) has been very successful (combined with pattern recognition) at identifying massive Botnets. Some modern techniques such as recommendation engines sometimes fail (unable to detect fake reviews) because they still rely on old, poor statistical techniques rather than modern data science. Though the fix to this issue is reworking the business model, rather than improving data science algorithms.
+Finally, old statistics use a top-down approach, from model and theory to data, while new statistics or data science use a bottom-up approach, from data to model or algorithm.
+Conclusions
+Based on what many statisticians think statistical science is, and is not, I am tempted to say that modern data science barely uses statistical science. Instead, it mostly relies on statistical principles that are not considered statistical science by most people who call themselves statisticians, because of their rigid perception of what statistics is, and their inability to adapt to change. 
+To the contrary, for non statisticians (computer scientists, engineers and so on), it is clear that data science has a strong statistical component. In my heart, I also believe that new statistics is also a core component of data science. Yet when talking to hiring managers, I tell them that statistics is another animal, because in their mind, statistics is old statistics. And old statistics is barely used anymore in modern data science. Likewise, when talking to statisticians, I tell them that data science is not statistics, to not upset them or waste my time in fruitless argumentation.
+DSC Resources
+
+Career: Training | Books | Cheat Sheet | Apprenticeship | Certification | Salary Surveys | Jobs
+Knowledge: Pure Data Science | Competitions and Challenges | Webinars | Our Book
+Buzz: Business News | Announcements | Events | RSS Feeds
+Misc: Top Links | Code Snippets | External Resources | Best Blogs | Subscribe | For Bloggers
+
+Additional Reading
+
+4 easy steps to becoming a data scientist
+13 New Trends in Big Data and Data Science
+22 tips for better data science
+Data Science Compared to 16 Analytic Disciplines
+How to detect spurious correlations, and how to find the real ones
+17 short tutorials all data scientists should read (and practice)
+10 types of data scientists
+66 job interview questions for data scientists
+High versus low-level data science
+
+Follow us on Twitter: @DataScienceCtrl | @AnalyticBridge 
+
+
+ 
+Views: 48828
+
+Tags: predictive modeling 
+
+
+
+
+Like 
+
+
+19 members like this
+
+
+
+Share 
+
+Tweet
+
+Facebook
+
+
+
+
+
+
+
+< Previous Post Next Post >
+
+
+
+
+
+Comment
+
+You need to be a member of Data Science Central to add comments!
+Join Data Science Central
+
+
+
+
+
+
+ Comment by Richard Perry on February 4, 2016 at 11:17pm 
+
+Very silly article. I am a "Data Scientist" but my previous job title was "Statistician". While there are subtle differences, this article a consequence of naivety. The writer sounds a bit like Nassim Nicholas Taleb. I've added comments here: https://docs.google.com/document/d/1ZKBvDc487tJ04Cyylwr_QKLCrgfonCk... 
+
+
+
+
+ Comment by Sione Palu on December 29, 2014 at 10:02am 
+
+I think we should stop & desist bashing statisticians as somehow we are superior than them. We should bear in mind that the term data-scientist was a recently invented term in the last 2 or 3 years which some may look at it as a fad.
+
+I guess that the scientists at CERN who are doing data analytics don't regard or view themselves as data-scientists even though they pretty much breath data analytics from sunrise till sunset. They themselves still use some of the old statistics listed above. We can't dismiss them as non-data-scientists (even they hardly want to call themselves data scientists). One of my data science team member is a Physicist who did her intern at CERN last year (2013). She came with no knowledge of machine learning but now, she's pretty much well verse in machine learning because of her ability to absorb very fast.
+
+Old statistics will still be around for a long time and based on what I see in the literature, they evolve into new variants which their performances improved over the old variants. 
+
+
+
+
+ Comment by Vincent Granville on December 13, 2014 at 12:06pm 
+
+And my reply to a comment on LinkedIn:
+Peter, your last reply illustrates well how the two schools (new versus old statistics) are different. You wrote "finding the best combination of predictors is generally a NP problem". Data science does not care about the best combination, but about a few ones that are good enough and easy to interpret. And you can easily guess how much more predictive power you will gain by running your algorithms for billions of years, after having obtained something decent in a few hours or minutes. Usually, very little.
+And regarding a proven track record for my techniques, I won't publish in scientific journals or talk at conferences. I have used my methods with success, and it's up to you to decide whether they are worth spending your time or not. And this is part of a new school of doing scientific research: self-funded (thanks to the success of my methods!), posting in highly visited blogs like here (150,000 members) or DSC. It gets published much faster, reaches far more professionals, and I received unbiased feedback from other members. In short, peer-review in real time, and public. And all the time that I saved by not publishing in traditional outlets or attending conferences, I use it to further grow the data science community and disseminate my intellectual property. I do spend time reading what other authors publish.
+My next book (data science 2.0) will be self-published (so I retain copyrights and other benefits) and most likely priced very competitively (5 times cheaper than competition), and the digital version will be free. I will market it myself via my different communities, reaching out to far more people, and at no cost, than any traditional author or publisher can do.
+By the way, that's data science that works, because growing these communities involves serious data science. AMSTAT (or anyone else for that matter) with its bunch of statisticians, can't compete with me (a one-man organization) in terms of growing, and they must be paying a lot of money in marketing, despite the fact that I publish many of my growth strategies. Indeed, they even hired a PR firm. Now we are talking about data science that works. Data science that works well enough to beat competitors and generate good revenue with high margins, involving computational marketing and various campaign optimizations techniques.
+Regarding cross-validation, you should also make sure that the test cases have buckets of data not found in the control cases. For instance, data from a different type of clients or different industry. That's the only way you can check how your model will perform when faced with new, unusual data. Proper data bucketization is thus an important step prior to performing cross-validation. You also need to use a feature selection algorithm that is stable in the way it detects the best predictors.  Finally, data science is good at fast development and fast execution of stable algorithms. 
+
+
+
+
+ Comment by Vincent Granville on December 13, 2014 at 9:40am 
+
+Another precision:
+My hidden decision trees and Jackknife regression contain stuff similar to Lasso (constrained or ridge regression), boosted trees and random forests blended together. But it is not underlined by any statistical models, nor solved with complex mathematical optimization. Instead, it is data-driven with solution arising easily and naturally using a simple, fast algorithm. The data reduction step uses a criterion called predictive power, to find best combinations of predictors. Data bucketization and bucket sizing is an important part of the process, as well as extrapolations at the bucket level. All this stuff is available for free to everyone. It's open patent or open intellectual property. 
+
+
+
+
+ Comment by Richard Hackathorn on December 11, 2014 at 8:13pm 
+
+@Mark Dr. Granville has consistently challenged us to define the boundaries of Data Science, and my comment about Process Mining was in this spirit. Disagree that Process Mining is not Data Science. It appears as a specialization of event sequence analysis, a discipline initiated by Carl Petri in 1939. Petri Nets have unique formalisms of liveness and the like. And, they have evolved into elaborate business process modeling techniques.  The Process Mining paradigm of play-in (event sequence to Petri-like model) or play-out (Petri-like model to event seq) seems analogous to Markov Chains and Markov Processes. Is Process Mining another branch of new statistics, as defined above? I am certainly seeing practical applications in my work, as cited previously. 
+
+
+
+
+ Comment by Vincent Granville on December 11, 2014 at 1:31pm 
+
+Ralph, new statistics include a modern version of logistic regression, highly constrained, with very few parameters, making it easy to interpret, stable, and solved without using maximum likelihood estimation, indeed without statistical model.  And it's blended with other classifiers. I also take results from scientific studies and research with a grain of salt. Is it replicable, works consistently for my own data, and is there a more robust  methodology 10 times easier to implement, that yields the same results? These are the questions I ask myself before implementing a technique. 
+
+
+
+
+ Comment by Ralph Winters on December 11, 2014 at 1:12pm 
+
+Apparently, IBM trusts 'old' logistic regression enough to incorporate it as the basis of Watson for ranking Jeopardy answers. Food for though when considering the stability of a 'new' vs. 'old' technique.
+See: https://www.linkedin.com/groups/Statistics-old-friend-logistic-regr...
+"Over the course of the project, we have experimented with logistic regression, support vector machines with linear and nonlinear kernels, boosting, single and multilayer neural nets, decision trees, and locally weighted learning; however, we have consistently found better performance using regularized logistic regression, which is the technique used in the final Watson system."
+ 
+
+
+
+
+ Comment by Vincent Granville on December 11, 2014 at 12:36pm 
+
+One of the things I'd like to accomplish is to democratize science. Traditional stats can be arcane to the non expert, and there's a bit of secrecy or mystery around the recipes used by statisticians. Old statistics seem to be for a small elite of people initiated to the secrets. Outsiders are not welcome (and I made myself an outsider though I was once an insider). Hopefully my new statistics (whatever you call it) are not mysterious, easy to understand and safe to use by professionals such as engineers, programmers, decision makers, business analysts, geographers, economists and many more. 
+
+
+
+
+ Comment by Richard Hackathorn on December 11, 2014 at 10:58am 
+
+Maybe off topic for this blog... What about Process Mining? Is it part of Data Science? See https://www.coursera.org/course/procmin taught by Prof Wil can der Aalst at Endhoven Univ. I am casually taking the class. Parts are interesting and difficult. Hot research in Europe. I am starting to see overlapping applications with website behavior analysis of event sequences to predict customer churn potential. 
+
+
+
+
+ Comment by Jose Luis Dengra on December 11, 2014 at 8:52am 
+
+Anyway I would say that statistical sense is critical while learning data science and related to the data scientist future performance as well as number sense is for children while learning math for their future performance in algebra.If you take a look at the following document, written by Dr. Jo Boaler from Stanford University, you will understand what I mean with number sense. Dealing with statistical concepts and inference is essential for a data scientist in order to be able to assert conclusions about any study.
+Fluency Without Fear: Research Evidence on the Best Ways to Learn M... 
+
+
+‹ Previous
+1
+2
+Next ›
+
+
+Page
+
+
+
+
+
+
+
+RSS
+
+
+
+
+
+
+
+ 
+
+Welcome toData Science Central
+Sign Upor Sign In
+
+
+
+
+
+
+
+
+
+
+
+Resources
+
+
+Subscribe to DSC Newsletter
+Free Books
+
+Forum Discussions
+
+Cheat Sheets
+
+Jobs
+Search DSC
+DSC on Twitter
+DSC on Facebook
+
+
+
+
+
+
+
+
+
+
+
+
+Videos
+
+
+
+
+
+
+
+
+
+
+
+DSC Webinar Series: Condition-Based Monitoring Analytics Techniques In Action 
+
+Added by Sean Welch 
+0 Comments
+
+0 Likes
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+DSC Webinar Series: A Collaborative Approach to Machine Learning 
+
+Added by Tim Matteson 
+0 Comments
+
+1 Like
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+DSC Webinar Series: Reporting Made Easy: 3 Steps to a Stronger KPI Strategy 
+
+Added by Sean Welch 
+0 Comments
+
+1 Like
+
+
+
+
+
+ 
+
+
+
+Add Videos
+View All
+
+
+
+
+
+
+
+
+
+
+
+
+© 2020   TechTarget, Inc.  
+Powered by
+
+ 
+
+Badges  | 
+Report an Issue  | 
+Privacy Policy  | 
+Terms of Service
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hello, you need to enable JavaScript to use Data Science Central.
+Please check your browser settings or contact your system administrator.
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+Most Popular Content on DSC
+To not miss this type of content in the future, subscribe to our newsletter.
+
+Book: Applied Stochastic Processes
+Long-range Correlations in Time Series: Modeling, Testing, Case Study
+How to Automatically Determine the Number of Clusters in your Data
+New Machine Learning Cheat Sheet | Old one
+Confidence Intervals Without Pain - With Resampling
+Advanced Machine Learning with Basic Excel
+New Perspectives on Statistical Distributions and Deep Learning
+Fascinating New Results in the Theory of Randomness
+Fast Combinatorial Feature Selection
+
+Other popular resources
+
+Comprehensive Repository of Data Science and ML Resources
+Statistical Concepts Explained in Simple English
+Machine Learning Concepts Explained in One Picture
+100 Data Science Interview Questions and Answers
+Cheat Sheets |
+Curated Articles |
+Search |
+Jobs |
+Courses
+Post a Blog |
+Forum Questions |
+Books |
+Salaries |
+News
+
+
+Archives: 2008-2014 |
+2015-2016 |
+2017-2019 |
+Book 1 |
+Book 2 |
+More
+
+Follow us: Twitter | Facebook
+
+
+
+
+
+Most popular articles
+
+Free Book and Resources for DSC Members
+New Perspectives on Statistical Distributions and Deep Learning
+Time series, Growth Modeling and Data Science Wizardy
+Statistical Concepts Explained in Simple English
+Machine Learning Concepts Explained in One Picture
+Comprehensive Repository of Data Science and ML Resources
+Advanced Machine Learning with Basic Excel
+Difference between ML, Data Science, AI, Deep Learning, and Statistics
+Selected Business Analytics, Data Science and ML articles
+How to Automatically Determine the Number of Clusters in your Data
+Fascinating New Results in the Theory of Randomness
+
+Hire a Data Scientist |
+Search DSC |
+Find a Job
+Post a Blog |
+Forum Questions
+
+
+
+
+
+
+
+
+
+
+
